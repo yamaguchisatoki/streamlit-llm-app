@@ -3,9 +3,15 @@ import streamlit as st
 from openai import OpenAI
 
 from dotenv import load_dotenv
+import os
 
 # .envファイルを読み込む
 load_dotenv()
+
+# 環境変数の取得
+api_key = os.environ.get("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is not set")
 
 def get_llm_response(user_input, expert_type):
     """
